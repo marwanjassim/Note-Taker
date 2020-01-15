@@ -61,7 +61,14 @@ app.post("/api/notes", function(req, res) {
 })
 
 // Implement DELETE /api/notes/<ID>: delete a note
-
+app.delete("/api/notes/:id", function(req, res){
+  data.splice(req.params.id, 1)
+  writeDB()
+  
+  // Tell browser it succeeded
+  res.status(200)
+  res.end()
+})
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
